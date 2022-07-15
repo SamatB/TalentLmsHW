@@ -36,10 +36,9 @@
         <td th:text="${student.studyFormat}"></td>
 
         <td>
-            <form th:method="UPDATE" th:action="@{/students/{id}/update(id=${student.getId()})}">
-                <input type="submit" value="delete" style="height: 45px; width: 85px; background-color:green;"/>
-            </form>
-<!--            <a th:href="@{/students/{id}/update(id=${student.getId()})}">update</a>-->
+            <a th:href="@{/students/{id}/update(id=${student.getId()})}">
+                <button type="update" style="height: 45px; width: 85px; background-color:lightgreen;"> UPDATE</button>
+            </a>
         </td>
         <td>
             <form th:method="DELETE" th:action="@{/students/{id}(id=${student.getId()})}">

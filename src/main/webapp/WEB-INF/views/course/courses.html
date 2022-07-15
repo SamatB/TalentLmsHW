@@ -32,7 +32,9 @@
         <td th:text="${course.durationMonth}"></td>
         <td th:text="${course.getCompany().getCompanyName()}"></td>
         <td>
-            <a th:href="@{/courses/{id}/updateCourse(id=${course.getId()})}">update</a>
+            <a th:href="@{/courses/{id}/updateCourse(id=${course.getId()})}">
+                <button type="update" style="height: 40px; width: 80px; background-color:lightgreen;"> UPDATE</button>
+            </a>
         </td>
         <td><form th:method="DELETE" th:action="@{/courses/{id}(id=${course.getId()})}">
             <input type="submit" value="delete" style="height: 40px; width: 80px; background-color:red;"/></form></td>

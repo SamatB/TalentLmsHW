@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Searching</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h2>Search student by name</h2>
+    <form th:action="@{/groups/search}" method="get">
+        <div class="search">
+            <input type="text" name="name" th:value="${name}" class="searchTerm" placeholder="Who are you looking for?">
+            <button type="submit" class="searchButton">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
+    </form>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First name</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Study Format</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${list}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.studyFormat}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="back-button">
+        <a th:href="@{/groups}">
+            <button class="button">Go back</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>

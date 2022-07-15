@@ -4,6 +4,7 @@ import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Group;
 import com.peaksoft.service.CourseService;
 import com.peaksoft.service.GroupService;
+import com.peaksoft.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,12 @@ public class GroupController {
     private final GroupService groupService;
     private final CourseService courseService;
 
+    private final StudentService studentService;
     @Autowired
-    public GroupController(GroupService groupService,CourseService courseService) {
+    public GroupController(GroupService groupService, CourseService courseService, StudentService studentService) {
         this.groupService = groupService;
         this.courseService=courseService;
+        this.studentService = studentService;
     }
 
     @ModelAttribute("courseList")
@@ -61,5 +64,16 @@ public class GroupController {
        Group group= groupService.getGroupById(id);
        groupService.deleteGroup(group);
        return "redirect:/groups";
+    }
+
+    @GetMapping("/search")
+    public String search(String name, Model model) {
+        if (name != null) {
+            model.addAttribute("list", studentService.findStudentByName(name));
+        }
+        else {
+            model.addAttribute("list", studentService.getAllStudents());
+        }
+        return "/student/studentSearch";
     }
 }

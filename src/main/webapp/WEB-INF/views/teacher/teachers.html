@@ -33,10 +33,9 @@
         <td th:text="${teacher.lastName}"></td>
         <td th:text="${teacher.email}"></td>
         <td>
-            <form th:method="UPDATE" th:action="@{/teachers/{id}/update(id=${teacher.getId()})}">
-                <input type="submit" value="delete" style="height: 45px; width: 85px; background-color:green;"/>
-            </form>
-<!--            <a th:href="@{/teachers/{id}/update(id=${teacher.getId()})}">update</a>-->
+            <a th:href="@{/teachers/{id}/update(id=${teacher.getId()})}">
+                <button type="update" style="height: 45px; width: 85px; background-color:lightgreen;"> UPDATE</button>
+            </a>
         </td>
         <td>
             <form th:method="DELETE" th:action="@{/teachers/{id}(id=${teacher.getId()})}">

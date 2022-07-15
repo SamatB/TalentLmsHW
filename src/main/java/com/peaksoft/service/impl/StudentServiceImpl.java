@@ -41,4 +41,9 @@ public class StudentServiceImpl implements StudentService {
     public void updateStudent(Student student, long id) {
         studentDAO.updateStudent(student);
     }
+
+    @Override
+    public List<Student> findStudentByName(String name) {
+        return studentDAO.findStudentByName(name);
+    }
 }
