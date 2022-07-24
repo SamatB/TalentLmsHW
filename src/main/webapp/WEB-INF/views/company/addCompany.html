@@ -6,6 +6,10 @@
         background: url("https://wallpaperaccess.com/full/19609.jpg") no-repeat;
         background-size: cover;
     }
+    .red1{
+        color: black;
+        background-color: red;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -26,7 +30,10 @@
         <br><br>
         <input type="text"  name="located Country" th:field="*{locatedCountry}" placeholder="Located Country">
         <br><br>
-        <input type="submit" value="Add">
+        <input type="submit" value="Add" class="add1 btn btn-outline-success">
+    </form>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Logout" class="red1 btn btn-outline-success">
     </form>
 </div>
 

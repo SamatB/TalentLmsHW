@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html" lang="en">
+<style>
+body{
+background: url("https://wallpaperaccess.com/full/19607.jpg") no-repeat;
+background-size: cover;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="card"
+     th:action="@{/{username}(username=${user.getUserName()})}"
+     th:object="${user}"
+     th:method="get"
+     style="text-align: center">
+    <h1 th:text="*{getUserLastname}"></h1>
+    <h1 th:text="*{userName}"></h1>
+    <p class="title" th:text="*{age}"></p>
+    <a href="#"><i class="fa fa-dribble"></i></a>
+    <a href="#"><i class="fa fa-facebook"></i></a>
+    <a href="#"><i class="fa fa-telegram"></i></a>
+    <a href="#"><i class="fa fa-whatsapp"></i></a>
+    <p><button>For connection</button></p>
+
+</div>
+</body>
+</html>

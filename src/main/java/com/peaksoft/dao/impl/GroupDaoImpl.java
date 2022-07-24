@@ -1,6 +1,7 @@
 package com.peaksoft.dao.impl;
 
 import com.peaksoft.dao.GroupDAO;
+import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Group;
 
 
@@ -48,6 +49,12 @@ public class GroupDaoImpl implements GroupDAO {
        group1.setDateOfCreate(group.getDateOfCreate());
        group1.setDateOfFinish(group.getDateOfFinish());
        entityManager.merge(group1);
+    }
 
+    @Override
+    public List<Course> getCoursesByGroup(Long groupId){
+        List<Course> courses = entityManager.createQuery("select c from Course c join c.groups g where g.id=?1", Course.class)
+                .setParameter(1, groupId).getResultList();
+        return courses;
     }
 }

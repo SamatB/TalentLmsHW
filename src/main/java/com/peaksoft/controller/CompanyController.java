@@ -57,6 +57,7 @@ public class CompanyController {
         return "redirect:/companies";
     }
 
+    @GetMapping("/getStudents/{companyId}")
     public String getStudents(@PathVariable("companyId") Long companyId, Model model) {
         List<Student> students;
         students = studentService.getStudentsByCompany(companyId);

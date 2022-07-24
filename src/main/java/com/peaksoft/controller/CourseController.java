@@ -69,6 +69,7 @@ public class CourseController {
         return "redirect:/courses";
     }
 
+    @GetMapping("/groups/{courseId}")
     public String getCourses(@PathVariable("courseId") Long courseId, Model model) {
         List<Group> groups;
 

@@ -1,16 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>STUDENTS AMOUNT</title>
     <style>
         body{
             background: url("https://wallpaperaccess.com/full/19610.jpg") no-repeat;
             background-size: cover;
         }
+        .container{
+            color: aliceblue;
+        }
     </style>
 </head>
 <body>
-
+<div class="container">
+    <h1>Students amount</h1>
+    <div class="section">
+        <table>
+            <thead>
+            <h1 th:text="${size}" style="text-align: center"></h1>
+            <tr>
+                <th>Student Id</th>
+                <th>First name</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Study format</th>
+                <th>Group</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student:${students}">
+                <td th:text="${student.getId()}"></td>
+                <td th:text="${student.getFirstName()}"></td>
+                <td th:text="${student.getLastName()}"></td>
+                <td th:text="${student.getEmail()}"></td>
+                <td th:text="${student.getStudyFormat()}"></td>
+                <td th:text="${student.getGroup.getGroupName()}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div>
+            <a th:href="@{/companies}">
+                <button class="btn1 btn-outline-success">Go back</button>
+            </a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
