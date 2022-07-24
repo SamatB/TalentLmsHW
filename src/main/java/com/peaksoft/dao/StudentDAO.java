@@ -17,4 +17,6 @@ public interface StudentDAO {
     void updateStudent(Student student);
 
     List <Student> findStudentByName(String name);
+
+    List<Student> getStudentsByCompany(Long companyId);
 }

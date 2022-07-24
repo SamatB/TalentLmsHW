@@ -1,7 +1,9 @@
 package com.peaksoft.controller;
 
 import com.peaksoft.entity.Company;
+import com.peaksoft.entity.Student;
 import com.peaksoft.service.CompanyService;
+import com.peaksoft.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +15,12 @@ import java.util.List;
 @RequestMapping("/companies")
 public class CompanyController {
     private final CompanyService companyService;
+    private final StudentService studentService;
 
     @Autowired
-    public CompanyController(CompanyService companyService) {
+    public CompanyController(CompanyService companyService, StudentService studentService) {
         this.companyService = companyService;
+        this.studentService = studentService;
     }
 
     @GetMapping()
@@ -53,4 +57,11 @@ public class CompanyController {
         return "redirect:/companies";
     }
 
+    public String getStudents(@PathVariable("companyId") Long companyId, Model model) {
+        List<Student> students;
+        students = studentService.getStudentsByCompany(companyId);
+        model.addAttribute("students", students);
+        model.addAttribute("size", students.size());
+        return "company/getStudents";
+    }
 }

@@ -1,5 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<style>
+    body{
+        background: url("https://wallpaperaccess.com/full/19624.jpg") no-repeat;
+        background-size: cover;
+    }
+    head{
+        color: aliceblue;
+    }
+    .login-box{
+        color: aliceblue;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Add Teacher</title>
@@ -7,6 +20,9 @@
 
 </head>
 <body>
+<div class="login-box" style="text-align: center; margin-top: 200px";>
+    <h2>Add a teacher</h2>
+</div>
 <form th:action="@{saveTeacher}"
       th:object="${teacher}"
       method="post"

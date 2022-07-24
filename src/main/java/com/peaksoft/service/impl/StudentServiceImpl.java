@@ -46,4 +46,9 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findStudentByName(String name) {
         return studentDAO.findStudentByName(name);
     }
+
+    @Override
+    public List<Student> getStudentsByCompany(Long companyId) {
+        return studentDAO.getStudentsByCompany(companyId);
+    }
 }

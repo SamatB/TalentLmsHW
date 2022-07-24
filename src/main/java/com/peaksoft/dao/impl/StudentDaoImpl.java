@@ -53,4 +53,13 @@ public class StudentDaoImpl implements StudentDAO {
                 .setParameter(1, name).getResultList();
         return students;
     }
+
+    @Override
+    public List<Student> getStudentsByCompany(Long companyId) {
+        List<Student>students=entityManager.createQuery(
+                        "select s from Student s join Group g on g.id=s.group.id  join g.courses c   join Company com on com.id=c.company.id where com.id=?1",Student.class)
+                .setParameter(1,companyId).getResultList();
+        return students;
+    }
+
 }

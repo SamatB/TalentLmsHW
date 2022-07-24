@@ -11,4 +11,6 @@ public interface StudentService {
     void deleteStudent(Student student);
     void updateStudent(Student student, long id);
     List <Student> findStudentByName(String name);
+
+    List<Student> getStudentsByCompany(Long companyId);
 }

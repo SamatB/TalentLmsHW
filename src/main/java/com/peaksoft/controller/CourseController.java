@@ -2,6 +2,7 @@ package com.peaksoft.controller;
 
 import com.peaksoft.entity.Company;
 import com.peaksoft.entity.Course;
+import com.peaksoft.entity.Group;
 import com.peaksoft.service.CompanyService;
 import com.peaksoft.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,9 +63,14 @@ public class CourseController {
         return "redirect:/courses";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteCourse(@PathVariable("id")Long id){
         coursesService.deleteCourse(coursesService.getCourseById(id));
         return "redirect:/courses";
+    }
+
+    public String getCourses(@PathVariable("courseId") Long courseId, Model model) {
+        List<Group> groups;
+
     }
 }
