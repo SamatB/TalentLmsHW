@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<style>
+    body{
+        background: url("https://wallpaperaccess.com/full/19618.jpg") no-repeat;
+        background-size: cover;
+    }
+    .table{
+        color: aliceblue;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        body{
-            background: url("https://wallpaperaccess.com/full/19613.png") no-repeat;
-            background-size: cover;
-        }
-        .table{
-            color: aliceblue;
-        }
-    </style>
 </head>
 <body>
 <table class="table table-bordered">
@@ -30,6 +30,7 @@
         <td th:text="${group.groupName}"></td>
         <td th:text="${group.dateOfCreate}"></td>
         <td th:text="${group.dateOfFinish}"></td>
+
     </tr>
     </tbody>
 </table>

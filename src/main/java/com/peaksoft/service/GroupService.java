@@ -11,5 +11,7 @@ public interface GroupService {
     Group getGroupById(Long id);
     void deleteGroup(Group group);
     void updateGroup(Group group,Long id);
-    public List<Course> getCoursesByGroup(Long groupId);
+    List<Course> getCoursesByGroup(Long groupId);
+    List<Group> getGroupsByStudentId(Long studentId);
+
 }

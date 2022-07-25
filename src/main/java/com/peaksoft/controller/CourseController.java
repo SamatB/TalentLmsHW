@@ -72,6 +72,8 @@ public class CourseController {
     @GetMapping("/groups/{courseId}")
     public String getCourses(@PathVariable("courseId") Long courseId, Model model) {
         List<Group> groups;
-
+        groups = coursesService.getGroupsByCourse(courseId);
+        model.addAttribute("groups", groups);
+        return "course/getGroups";
     }
 }

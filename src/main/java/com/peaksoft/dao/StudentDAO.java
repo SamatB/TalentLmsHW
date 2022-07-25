@@ -1,6 +1,7 @@
 package com.peaksoft.dao;
 
 
+import com.peaksoft.entity.Group;
 import com.peaksoft.entity.Student;
 
 import java.util.List;

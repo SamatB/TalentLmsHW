@@ -16,6 +16,14 @@
             padding: 20px 400px;
             margin: 10px 200px;
         }
+        .ss{
+            position: relative;
+            height: calc(3.5rem + 2px);
+            line-height: 1.25;
+            margin: 60px 660px;
+            color: black;
+            border-radius: 12px;
+        }
     </style>
 </head>
 
@@ -34,6 +42,7 @@
         <th scope="col">Lastname</th>
         <th scope="col">email</th>
         <th scope="col">Study format</th>
+        <th scope="col">Groups</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
     </tr>
@@ -45,21 +54,22 @@
         <td th:text="${student.lastName}"></td>
         <td th:text="${student.email}"></td>
         <td th:text="${student.studyFormat}"></td>
+        <td th:href="@{groups/{studentId}(student=${student.getId()})}"></td>
 
         <td>
             <a th:href="@{/students/{id}/update(id=${student.getId()})}">
-                <button type="update" style="height: 45px; width: 85px; background-color:lightgreen;"> UPDATE</button>
+                <button type="update" style="height: 45px; width: 85px; background-color:lightgreen; border-radius: 12px"> UPDATE</button>
             </a>
         </td>
         <td>
             <form th:method="DELETE" th:action="@{/students/{id}(id=${student.getId()})}">
-            <input type="submit" value="delete" style="height: 45px; width: 85px; background-color:red;"/>
+            <input type="submit" value="DELETE" style="height: 45px; width: 85px; background-color:red; border-radius: 12px"/>
         </form>
         </td>
     </tr>
     </tbody>
 </table>
-<input style=" display: block; margin:auto; font-size:30px;" type="button" value="Add Student"
+<input class="ss" type="button" value="Add Student"
        onclick="window.location.href = 'students/addStudent'">
 </body>
 </html>

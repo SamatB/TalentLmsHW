@@ -1,6 +1,7 @@
 package com.peaksoft.dao.impl;
 
 import com.peaksoft.dao.StudentDAO;
+import com.peaksoft.entity.Group;
 import com.peaksoft.entity.Student;
 import org.springframework.stereotype.Repository;
 

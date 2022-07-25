@@ -47,4 +47,9 @@ public class GroupServiceImpl implements GroupService {
     public List<Course> getCoursesByGroup(Long groupId) {
         return groupDAO.getCoursesByGroup(groupId);
     }
+
+    @Override
+    public List<Group> getGroupsByStudentId(Long studentId) {
+        return groupDAO.getGroupsByStudentId(studentId);
+    }
 }

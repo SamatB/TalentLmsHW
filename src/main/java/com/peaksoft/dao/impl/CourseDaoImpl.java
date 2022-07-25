@@ -4,6 +4,7 @@ import com.peaksoft.dao.CompanyDAO;
 import com.peaksoft.dao.CourseDAO;
 import com.peaksoft.entity.Company;
 import com.peaksoft.entity.Course;
+import com.peaksoft.entity.Group;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -60,5 +61,12 @@ public class CourseDaoImpl implements CourseDAO {
     public void deleteCourse(Course course) {
         entityManager.remove(entityManager.contains(course)?course:entityManager.merge(course));
 
+    }
+
+    @Override
+    public List<Group> getGroupsByCourse(Long courseId) {
+      List<Group> groups = entityManager.createQuery("select g from Group g join g.courses c where c.id=?1", Group.class)
+              .setParameter(1, courseId).getResultList();
+        return groups;
     }
 }

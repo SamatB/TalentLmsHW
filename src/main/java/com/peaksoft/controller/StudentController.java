@@ -67,4 +67,10 @@ public class StudentController {
         studentService.deleteStudent(student);
         return "redirect:/students";
     }
+
+    @GetMapping("/groups/{studentId}")
+    public String getGroups(@PathVariable("studentId") Long studentId, Model model) {
+        model.addAttribute("groups", groupService.getGroupsByStudentId(studentId));
+        return "/student/getGroups";
+    }
 }
