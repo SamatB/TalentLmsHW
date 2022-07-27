@@ -1,8 +1,10 @@
 package com.peaksoft.dao.impl;
 
+import com.peaksoft.dao.GroupDAO;
 import com.peaksoft.dao.StudentDAO;
 import com.peaksoft.entity.Group;
 import com.peaksoft.entity.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -14,8 +16,14 @@ import java.util.List;
 @Repository
 @Transactional
 public class StudentDaoImpl implements StudentDAO {
+    private final GroupDAO groupDAO;
     @PersistenceContext
     EntityManager entityManager;
+
+    @Autowired
+    public StudentDaoImpl(GroupDAO groupDAO) {
+        this.groupDAO = groupDAO;
+    }
 
     @Override
     public List<Student> getAllStudents() {
@@ -26,7 +34,9 @@ public class StudentDaoImpl implements StudentDAO {
     }
 
     @Override
-    public void saveStudent(Student student) {
+    public void saveStudent(Student student, Long groupId) {
+        Group group = groupDAO.getGroupById(groupId);
+        student.setGroup(group);
         entityManager.persist(student);
 
     }

@@ -45,7 +45,7 @@ public class TeacherController {
 
     @PostMapping("/saveTeacher")
     public String saveTeacher(@ModelAttribute("teacher") Teacher teacher) {
-        teacherService.saveTeacher(teacher);
+        teacherService.saveTeacher(teacher, teacher.getCourseId());
         return "redirect:/teachers";
     }
 

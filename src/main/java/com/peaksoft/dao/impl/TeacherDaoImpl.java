@@ -1,7 +1,10 @@
 package com.peaksoft.dao.impl;
 
+import com.peaksoft.dao.CourseDAO;
 import com.peaksoft.dao.TeacherDAO;
+import com.peaksoft.entity.Course;
 import com.peaksoft.entity.Teacher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,8 +16,14 @@ import java.util.List;
 @Repository
 @Transactional
 public class TeacherDaoImpl implements TeacherDAO {
+    private final CourseDAO courseDAO;
     @PersistenceContext
     EntityManager entityManager;
+
+    @Autowired
+    public TeacherDaoImpl(CourseDAO courseDAO) {
+        this.courseDAO = courseDAO;
+    }
 
     @Override
     public List<Teacher> getAllTeachers() {
@@ -25,7 +34,9 @@ public class TeacherDaoImpl implements TeacherDAO {
     }
 
     @Override
-    public void saveTeacher(Teacher teacher) {
+    public void saveTeacher(Teacher teacher, Long courseId) {
+        Course course = courseDAO.getCourseById(courseId);
+        teacher.setCourse(course);
         entityManager.merge(teacher);
     }
 

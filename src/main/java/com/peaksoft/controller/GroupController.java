@@ -30,11 +30,7 @@ public class GroupController {
     public List<Course> findAllCourses() {
         return courseService.getAllCourse();
     }
-    @GetMapping
-    public String getAllCourses(Model model) {
-        model.addAttribute("courses", courseService.getAllCourse());
-        return "group/courses";
-    }
+
     @GetMapping
     public String getAllGroups(Model model){
         model.addAttribute("groups",groupService.getAllGroups());

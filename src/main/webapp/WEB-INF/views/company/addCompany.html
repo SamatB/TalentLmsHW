@@ -10,6 +10,7 @@
         color: black;
         background-color: red;
     }
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -29,9 +30,11 @@
         <input type="text"  name="Company name" th:field="*{companyName}" placeholder="Company Name">
         <br><br>
         <input type="text"  name="located Country" th:field="*{locatedCountry}" placeholder="Located Country">
-        <br><br>
+        <br>
         <input type="submit" value="Add" class="add1 btn btn-outline-success">
     </form>
+    <input type="button"  value="Go back" class="back btn btn-outline-success"
+           onclick="window.location.href = '/companies'" style="background-color: yellowgreen">
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="Logout" class="red1 btn btn-outline-success">
     </form>

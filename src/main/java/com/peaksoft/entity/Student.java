@@ -2,10 +2,7 @@ package com.peaksoft.entity;
 
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -15,6 +12,7 @@ import javax.persistence.*;
 @Getter@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +25,10 @@ public class Student {
     private String email;
     @Enumerated
     private StudyFormat studyFormat;
+
+    @ManyToOne
+    @JoinColumn(name = "group_id")
+    private Group group;
 
     @Transient
     private Long groupId;

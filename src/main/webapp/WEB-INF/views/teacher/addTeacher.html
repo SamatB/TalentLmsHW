@@ -12,6 +12,19 @@
     .login-box{
         color: aliceblue;
     }
+    .add:hover{
+        background-color: yellowgreen;
+    }
+    .back{
+        padding: 10px 20px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: cornflowerblue;
+    }
+    .back:hover{
+        background-color: yellow;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -20,13 +33,13 @@
 
 </head>
 <body>
-<div class="login-box" style="text-align: center; margin-top: 200px";>
+<div class="login-box" style="text-align: center; margin-top: 30px;">
     <h2>Add a teacher</h2>
 </div>
 <form th:action="@{saveTeacher}"
       th:object="${teacher}"
       method="post"
-      style="text-align:center; margin-top:200px; font-size: 30px;">
+      style="text-align:center; margin-top:40px; font-size: 30px;">
     <input type="hidden" name = "id" th:field="*{id}">
     <input type="text"  name="Teacher Name" th:field="*{firstName}" placeholder="Teacher Name">
     <input type="text"  name="Teacher Lastname" th:field="*{lastName}" placeholder="Teacher lastname">
@@ -38,8 +51,10 @@
                 th:value="${teacher.getId()}"
                 th:text="${teacher.getCourseName()}"></option>
     </select>
-    <input type="submit" value="Add">
-
+    <input class="add" type="submit" value="Add" style="border-radius: 10px">
+<br><br>
+    <input type="button"  value="Go back" class="back"
+           onclick="window.location.href = '/teachers'">
 </form>
 
 </body>

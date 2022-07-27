@@ -1,10 +1,7 @@
 package com.peaksoft.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 import javax.persistence.*;
@@ -15,6 +12,7 @@ import java.util.List;
 @Getter@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +30,7 @@ public class Group {
             inverseJoinColumns = @JoinColumn(name = "courses_id"))
     List<Course>courses;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH})
     List<Student>students;
 
     @Transient

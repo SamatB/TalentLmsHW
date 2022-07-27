@@ -2,10 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html" lang="en">
 <style>
-body{
-background: url("https://wallpaperaccess.com/full/19607.jpg") no-repeat;
-background-size: cover;
-}
+    body {
+        background: url("https://wallpaperaccess.com/full/19607.jpg") no-repeat;
+        background-size: cover;
+    }
+    .card{
+        color: aliceblue;
+        padding: 20px;
+    }
+    .back {
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+    }
+    .back:hover{
+        background-color: yellowgreen;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -25,8 +38,10 @@ background-size: cover;
     <a href="#"><i class="fa fa-facebook"></i></a>
     <a href="#"><i class="fa fa-telegram"></i></a>
     <a href="#"><i class="fa fa-whatsapp"></i></a>
-    <p><button>For connection</button></p>
 
+    <br><br><br>
+    <input type="button" value="Go to main" class="back"
+           onclick="window.location.href = '/'">
 </div>
 </body>
 </html>

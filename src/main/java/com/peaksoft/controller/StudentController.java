@@ -44,7 +44,7 @@ public class StudentController {
 
     @PostMapping("/saveStudent")
     public String saveStudent(@ModelAttribute("student") Student student) {
-        studentService.saveStudent(student);
+        studentService.saveStudent(student, student.getGroupId());
         return "redirect:/students";
     }
 

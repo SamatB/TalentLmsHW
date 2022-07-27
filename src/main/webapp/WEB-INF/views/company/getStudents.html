@@ -12,13 +12,63 @@ xmlns:th="http://www.thymeleaf.org">
         .container{
             color: aliceblue;
         }
+        .back {
+            padding: 10px 30px;
+            margin: 0 auto;
+            border-radius: 12px;
+            display: block;
+        }
+        .back:hover{
+            background-color: yellowgreen;
+        }
+        .table {
+            width: 100%;
+            border: none;
+            margin-bottom: 20px;
+        }
+        .table thead th {
+            font-weight: bold;
+            text-align: left;
+            border: none;
+            padding: 10px 15px;
+            background: #d8d8d8;
+            font-size: 14px;
+        }
+        .table thead tr th:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+        .table thead tr th:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+        .table tbody td {
+            text-align: left;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            vertical-align: top;
+        }
+        .table tbody tr:nth-child(even){
+            background: #f3f3f3;
+        }
+        .table tbody tr td:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+        .table tbody tr td:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+        th{
+            color: black;
+        }
+        td{
+            color: red;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Students amount</h1>
     <div class="section">
-        <table>
+        <table class="table">
             <thead>
             <h1 th:text="${size}" style="text-align: center"></h1>
             <tr>
@@ -37,14 +87,14 @@ xmlns:th="http://www.thymeleaf.org">
                 <td th:text="${student.getLastName()}"></td>
                 <td th:text="${student.getEmail()}"></td>
                 <td th:text="${student.getStudyFormat()}"></td>
-                <td th:text="${student.getGroup.getGroupName()}"></td>
+                <td th:text="${student.getGroup().groupName}"></td>
             </tr>
             </tbody>
         </table>
         <div>
-            <a th:href="@{/companies}">
-                <button class="btn1 btn-outline-success">Go back</button>
-            </a>
+            <input type="button"  value="Go back" class="back"
+                   onclick="window.location.href = '/companies'" style="background-color: yellowgreen">
+
         </div>
     </div>
 </div>

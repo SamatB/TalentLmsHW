@@ -8,6 +8,19 @@
     .radio-button{
         color: aliceblue;
     }
+    .add:hover{
+        background-color: yellowgreen;
+    }
+    .back{
+        padding: 10px 20px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: sandybrown;
+    }
+    .back:hover{
+        background-color: yellow;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -35,13 +48,15 @@
         <label for="offlineFormat">OFFLINE</label>
     </div>
     <br>
-    <input type="submit" value="Add">
+    <input class="add" type="submit" value="Add" style="border-radius: 10px">
     <select th:field="*{id}">
         <option th:each="student:${groupList}"
                 th:value="${student.getId()}"
                 th:text="${student.getFirstName()}"></option>
     </select>
-
+    <br><br>
+    <input type="button"  value="Go back" class="back"
+           onclick="window.location.href = '/students'">
 
 </form>
 

@@ -1,9 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <style>
-    body{
+    body {
         background: url("https://wallpaperaccess.com/full/19614.jpg") no-repeat;
         background-size: cover;
+    }
+
+    form {
+        display: table;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 40px;
+    }
+
+    input {
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+    }
+
+    .upd:hover {
+        background-color: yellowgreen;
+    }
+
+    .upd {
+        border-radius: 12px;
+    }
+
+    .back {
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: yellowgreen;
+    }
+
+    .back:hover {
+        background-color: yellow;
+    }
+
+    .upd{
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: yellow;
+    }
+    h2{
+        color: white;
     }
 </style>
 <head>
@@ -11,18 +56,23 @@
     <title>Update Course</title>
 </head>
 <body>
-<form th:action="@{/courses/{id}(id=${course.getId()})}"
-  th:object="${course}"
-  th:method="patch">
-    <div>
-    <input th:field="*{courseName}" ></div>
-    <div>
-        <input th:field="*{durationMonth}">
-    </div>
-    <div>
-        <input type="submit" value="update">
-    </div>
-</form>
+<div style="text-align:center; margin-top:40px; font-size: 30px;">
+    <h2>Update a course</h2>
+    <form th:action="@{/courses/{id}(id=${course.getId()})}"
+          th:object="${course}"
+          th:method="patch"
+          style="text-align:center; margin-top:30px; font-size: 30px;">
 
+        <input type="text" th:field="*{courseName}" placeholder="Course Name">
+        <br>
+        <input type="text" th:field="*{durationMonth}" placeholder="Duration in month">
+
+        <br>
+        <input class="upd" type="submit" value="update">
+        <br>
+        <input class="back" type="button" value="Go back"
+               onclick="window.location.href = '/courses'">
+    </form>
+</div>
 </body>
 </html>

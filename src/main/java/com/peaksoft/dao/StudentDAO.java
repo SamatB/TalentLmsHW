@@ -9,7 +9,7 @@ import java.util.List;
 public interface StudentDAO {
     List<Student> getAllStudents();
 
-    void saveStudent(Student student);
+    void saveStudent(Student student, Long groupId);
 
     Student getStudentById(Long id);
 

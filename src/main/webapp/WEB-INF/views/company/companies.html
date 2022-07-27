@@ -2,73 +2,140 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Companies</title>
-  <style>
-    body{
-      background: url("https://wallpaperaccess.com/full/19604.jpg") no-repeat;
-      background-size: cover;
-    }
-    table,
-  td {
-    border: 2px solid #333;
-    margin-top: 230px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 27px;
-  }
+    <meta charset="UTF-8">
+    <title>Companies</title>
+    <style>
+        body {
+            background: url("https://wallpaperaccess.com/full/19604.jpg") no-repeat;
+            background-size: cover;
+        }
+        .head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: black;
+            size: 30px;
+            padding: 10px;
+            margin: 0 auto;
 
-  thead,
-  tfoot {
-    background-color: white;
-    color: black;
-  }
-  </style>
-  <style>
-    table, th, td {
-      border: 1px solid black;
-      padding: 3px;
-    }
-    .s1{
-      padding: 20px 400px;
-      margin: 10px 200px;
-    }
-  </style>
+        }
+
+        .btn {
+            border-radius: 12px;
+            padding: 10px 30px;
+            margin: 0 auto;
+            display: inline;
+            justify-content: space-between;
+        }
+
+        .btn:hover {
+            background-color: yellowgreen;
+        }
+
+        .add1 {
+            padding: 10px 30px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .back {
+            padding: 10px 30px;
+            margin: 0 auto;
+            border-radius: 12px;
+            display: block;
+        }
+        .back:hover{
+            background-color: yellowgreen;
+        }
+        .update:hover{
+            background-color: bisque;
+        }
+        .delete:hover{
+            background-color: bisque;
+        }
+        .table {
+            width: 100%;
+            border: none;
+            margin-bottom: 20px;
+        }
+        .table thead th {
+            font-weight: bold;
+            text-align: left;
+            border: none;
+            padding: 10px 15px;
+            background: #d8d8d8;
+            font-size: 14px;
+        }
+        .table thead tr th:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+        .table thead tr th:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+        .table tbody td {
+            text-align: left;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            vertical-align: top;
+        }
+        .table tbody tr:nth-child(even){
+            background: #f3f3f3;
+        }
+        .table tbody tr td:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+        .table tbody tr td:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+        .table{
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<div class="s1">
-  <button type="button" class="btn btn-outline-primary" th:href="@{/courses}"><a th:href= "@{/courses}">Course</a></button>
-  <button type="button" class="btn btn-outline-success" th:href="@{/groups}"> <a th:href= "@{/groups}">Group</a></button>
-  <button type="button" class="btn btn-outline-success" th:href="@{/students}"> <a th:href= "@{/students}">Student</a></button>
-  <button type="button" class="btn btn-outline-success" th:href="@{/teachers}"> <a th:href= "@{/teachers}">Teacher</a></button>
+<div class="head">
+    <header>
+        <button type="button" class="btn btn-outline-primary"><a th:href="@{/courses}">Course</a></button>
+        <button type="button" class="btn btn-outline-success"><a th:href="@{/groups}">Group</a></button>
+        <button type="button" class="btn btn-outline-success"><a th:href="@{/students}">Student</a></button>
+        <button type="button" class="btn btn-outline-success"><a th:href="@{/teachers}">Teacher</a></button>
+        <button type="button" class="btn btn-outline-success"><a th:href="@{/}">Main</a></button>
+    </header>
 </div>
-<table class="table table-bordered ">
-  <thead class="table-dark">
-  <tr>
-    <th scope="col">Id</th>
-    <th scope="col">Company name</th>
-    <th scope="col">Located country</th>
-    <th scope="col">Update</th>
-    <th scope="col">Delete</th>
-  </tr>
-  </thead>
-  <tbody class="table-success">
-  <tr th:each="company : ${companies}">
-    <td th:text="${company.id}"></td>
-    <td th:text="${company.companyName}"></td>
-    <td th:text="${company.locatedCountry}"></td>
-
-    <td><a th:href="@{/companies/{id}/updateCompany(id=${company.id})}">
-      <button style="height: 40px; width: 80px; background-color:lightgreen;">UPDATE</button>
-    </a>
-    </td>
-    <td><form th:method="DELETE" th:action="@{/companies/{id}(id=${company.getId()})}">
-      <input type="submit" value="DELETE" style="height: 40px; width: 80px; background-color:red;"/></form></td>
-  </tr>
-  </tbody>
+<br>
+<table class="table">
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Company name</th>
+        <th scope="col">Located country</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <tbody class="table-success">
+    <tr th:each="company : ${companies}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.companyName}"></td>
+        <td th:text="${company.locatedCountry}"></td>
+        <td>
+            <a class="update" th:href="@{/companies/{id}/updateCompany(id=${company.id})}">
+            <button  style="height: 40px; width: 80px; background-color:lightgreen; border-radius: 12px">UPDATE</button>
+        </a>
+        </td>
+        <td>
+            <form class="delete" th:method="DELETE" th:action="@{/companies/{id}(id=${company.getId()})}">
+                <input  type="submit" value="DELETE" style="height: 40px; width: 80px; background-color:red; border-radius: 12px"/></form>
+        </td>
+    </tr>
+    </tbody>
 </table>
 <br><br><br><br>
 <input type="button" value="Add company" class="add1 btn btn-outline-success"
        onclick="window.location.href = 'companies/addCompany'">
+<br><br>
+<input class="back" type="button" value="Go back to main"
+       onclick="window.location.href = '/'">
 </body>
 </html>

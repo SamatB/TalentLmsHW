@@ -1,28 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
+<style>
+    body{
+        background: url("https://wallpaperaccess.com/full/19611.jpg") no-repeat;
+        background-size: cover;
+    }
+    form{
+        display: table;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 40px;
+    }
+    input{
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+    }
+    .update-div:hover{
+        background-color: yellowgreen;
+    }
+    .update-div{
+        border-radius: 12px;
+    }
+    .back{
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: sandybrown;
+    }
+    .back:hover{
+        background-color: yellow;
+    }
+    .update-div{
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: yellow;
+    }
+    h2{
+        color: greenyellow;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        body{
-            background: url("https://wallpaperaccess.com/full/19611.jpg") no-repeat;
-            background-size: cover;
-        }
-    </style>
 </head>
 <body>
-<form th:action="@{/companies/{id}(id=${company.getId()})}"
+<div style = "text-align:center; margin-top:20px; font-size: 30px;">
+    <h2>Update a company</h2>
+    <form
+        th:action="@{/companies/{id}(id=${company.getId()})}"
       th:object="${company}"
-      th:method="patch">
-    <div>
-        <input th:field="*{companyName}" ></div>
-    <div>
-        <input th:field="*{locatedCountry}">
-    </div>
-    <div>
-        <input type="submit" value="update">
-    </div>
+      th:method="patch"
+      style="text-align:center; margin-top:30px; font-size: 30px;">
+    <label>
+        <input type="text" th:field="*{companyName}" placeholder="Company Name">
+    </label>
+    <br>
+        <input type="text" th:field="*{locatedCountry}" placeholder="Location - Country">
+<br><br>
+        <input class="update-div" type="submit" value="update">
+    <br><br>
+        <input type="button"  value="Go back" class="back"
+               onclick="window.location.href = '/companies'">
 </form>
+</div>
+
 </body>
 </html>

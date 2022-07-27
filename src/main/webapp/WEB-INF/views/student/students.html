@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>All students</title>
@@ -13,8 +14,12 @@
             color: aliceblue;
         }
         .s1{
-            padding: 20px 400px;
-            margin: 10px 200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            size: 40px;
+            padding: 30px;
+            margin: 0 auto;
         }
         .ss{
             position: relative;
@@ -24,15 +29,37 @@
             color: black;
             border-radius: 12px;
         }
+        .add1 {
+            color: black;
+            background-color: white;
+            padding: 10px 30px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 12px;
+            background-color: green;
+        }
+        .add1:hover{
+            background-color: greenyellow;
+        }
+        .back {
+            padding: 10px 30px;
+            margin: 0 auto;
+            border-radius: 12px;
+            display: block;
+            background-color: sandybrown;
+        }
+        .back:hover{
+            background-color: yellowgreen;
+        }
     </style>
 </head>
 
 <body>
 <div class="s1">
-    <button type="button" class="btn btn-outline-primary" ><a th:href= "@{/companies}">Company</a></button>
+    <button sec:authorize="hasAuthority('ADMIN')" type="button" class="btn btn-outline-primary" ><a th:href= "@{/companies}">Company</a></button>
     <button type="button" class="btn btn-outline-secondary" th:href="@{/courses}"><a th:href= "@{/courses}">Course</a></button>
     <button type="button" class="btn btn-outline-success" th:href="@{/groups}"> <a th:href= "@{/groups}">Group</a></button>
-    <button type="button" class="btn btn-outline-success" th:href="@{/teachers}"> <a th:href= "@{/teachers}">Teacher</a></button>
+    <button sec:authorize="hasAuthority('ADMIN')" type="button" class="btn btn-outline-success" th:href="@{/teachers}"> <a th:href= "@{/teachers}">Teacher</a></button>
 </div>
 <table class="table table-bordered">
     <thead>
@@ -54,22 +81,26 @@
         <td th:text="${student.lastName}"></td>
         <td th:text="${student.email}"></td>
         <td th:text="${student.studyFormat}"></td>
-        <td th:href="@{groups/{studentId}(student=${student.getId()})}"></td>
+        <td th:text="${student.getGroup().groupName}"></td>
+<!--        <td th:href="@{groups/{studentId}(student=${student.getId()})}"></td>-->
 
         <td>
-            <a th:href="@{/students/{id}/update(id=${student.getId()})}">
-                <button type="update" style="height: 45px; width: 85px; background-color:lightgreen; border-radius: 12px"> UPDATE</button>
+            <a class="update" th:href="@{/students/{id}/update(id=${student.getId()})}">
+                <button type="update" style="height: 40px; width: 80px; border-radius: 12px"> UPDATE</button>
             </a>
         </td>
         <td>
-            <form th:method="DELETE" th:action="@{/students/{id}(id=${student.getId()})}">
-            <input type="submit" value="DELETE" style="height: 45px; width: 85px; background-color:red; border-radius: 12px"/>
+            <form class="delete" th:method="DELETE" th:action="@{/students/{id}(id=${student.getId()})}">
+            <input sec:authorize="hasAuthority('ADMIN')" type="submit" value="DELETE" style="height: 45px; width: 85px; background-color:red; border-radius: 12px"/>
         </form>
         </td>
     </tr>
     </tbody>
 </table>
-<input class="ss" type="button" value="Add Student"
+<input type="button" value="Add Student" class="add1  btn-outline-success"
        onclick="window.location.href = 'students/addStudent'">
+<br><br>
+<input class="back" type="button" value="Go back to main"
+       onclick="window.location.href = '/'">
 </body>
 </html>

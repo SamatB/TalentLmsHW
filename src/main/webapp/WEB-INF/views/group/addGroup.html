@@ -5,6 +5,19 @@
         background: url("https://wallpaperaccess.com/full/19616.jpg") no-repeat;
         background-size: cover;
     }
+    .add:hover{
+        background-color: yellowgreen;
+    }
+    .back{
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: sandybrown;
+    }
+    .back:hover{
+        background-color: yellow;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
@@ -28,8 +41,10 @@
                 th:value="${course.getId()}"
                 th:text="${course.getCourseName()}"></option>
     </select>
-    <input type="submit" value="Add">
-
+    <input class="add" type="submit" value="Add" style="border-radius: 10px">
+    <br><br>
+    <input type="button"  value="Go back" class="back"
+           onclick="window.location.href = '/groups'">
 </form>
 
 </body>

@@ -8,21 +8,45 @@
     .login-box{
         color: aliceblue;
     }
+    label{
+        color: yellow;
+    }
+    .back:hover {
+        background-color: yellow;
+    }
+    .back {
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: yellowgreen;
+    }
+    .upd{
+        padding: 10px 30px;
+        margin: 0 auto;
+        border-radius: 12px;
+        display: block;
+        background-color: green;
+    }
+    .upd:hover{
+        background-color: yellow;
+    }
 </style>
 <head>
     <meta charset="UTF-8">
     <title>Update Teacher</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 <body>
-<div class="login-box">
+<div class="login-box" style="text-align:center; margin-top:40px; font-size: 30px;">
     <h2>Update a teacher</h2>
     <form action="#"
           th:method="PATCH"
           th:action="@{/teachers/{id}(id=${teacherUpdate.getId()})}"
-          th:object="${teacherUpdate}">
+          th:object="${teacherUpdate}"
+          style="text-align:center; margin-top:30px; font-size: 30px;">
 
-        <div class="user-box">
+
+    <div class="user-box">
             <label >Teacher Name</label>
             <input th:field="${teacherUpdate.firstName}">
         </div>
@@ -34,12 +58,13 @@
             <label>Teacher email</label>
             <input th:field="${teacherUpdate.email}">
         </div>
-        <button type="submit" value="Update">Update</button>
+        <br>
+        <button class="upd" type="submit" value="Update">Update</button>
     </form>
-    <div class="back-button">
-        <a th:href="@{/teachers}">
-            <button class="button">Go Back</button>
-        </a>
+    <div>
+        <br>
+        <input class="back" type="button" value="Go back"
+               onclick="window.location.href = '/groups'">
     </div>
 </div>
 </body>
