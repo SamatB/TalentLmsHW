@@ -54,8 +54,11 @@
             vertical-align: top;
         }
 
-        .table tbody tr:nth-child(even) {
-            background: #f3f3f3;
+        .table tbody tr:nth-child(even){
+            background: darkslategrey;
+        }
+        .table tbody tr:nth-child(odd){
+            background: gray;
         }
 
         .table tbody tr td:first-child {
@@ -66,7 +69,7 @@
             border-radius: 0 8px 8px 0;
         }
 
-        th {
+        th, td {
             color: black;
         }
         .add1 {
@@ -149,7 +152,7 @@
        onclick="window.location.href = 'groups/addGroup'">
 <br>
     <br>
-    <a class="search" th:href="@{/groups/search}">
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'INSTRUCTOR')" class="search" th:href="@{/groups/search}">
         <button type="search" class="button btn-outline-success">Search by name</button>
     </a>
     <br><br>

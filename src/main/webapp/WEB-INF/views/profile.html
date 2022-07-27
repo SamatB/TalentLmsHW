@@ -7,8 +7,8 @@
         background-size: cover;
     }
     .card{
-        color: aliceblue;
-        padding: 20px;
+        color: yellowgreen;
+        padding: 10px;
     }
     .back {
         padding: 10px 30px;
@@ -26,13 +26,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+<h1>Information about user</h1>
 <div class="card"
      th:action="@{/{username}(username=${user.getUserName()})}"
      th:object="${user}"
      th:method="get"
      style="text-align: center">
+    <label>Name</label>
     <h1 th:text="*{getUserLastname}"></h1>
+    <label>Lastname</label>
     <h1 th:text="*{userName}"></h1>
+    <label>Age</label>
     <p class="title" th:text="*{age}"></p>
     <a href="#"><i class="fa fa-dribble"></i></a>
     <a href="#"><i class="fa fa-facebook"></i></a>
