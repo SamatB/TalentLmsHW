@@ -95,7 +95,7 @@
         <th scope="col">Name</th>
         <th scope="col">Lastname</th>
         <th scope="col">email</th>
-        <th scope="col">Course</th>
+<!--        <th scope="col">Course</th>-->
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
     </tr>
@@ -106,7 +106,7 @@
         <td th:text="${teacher.firstName}"></td>
         <td th:text="${teacher.lastName}"></td>
         <td th:text="${teacher.email}"></td>
-        <td th:text="${teacher.getCourse().courseName}"></td>
+<!--        <td th:text="${teacher.getCourse().courseName}"></td>-->
         <td>
             <a class="update" th:href="@{/teachers/{id}/update(id=${teacher.getId()})}">
                 <button type="update" style="height: 40px; width: 80px; background-color:lightgreen; border-radius: 10px"> UPDATE</button>

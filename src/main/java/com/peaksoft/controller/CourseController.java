@@ -25,46 +25,47 @@ public class CourseController {
         this.companyService = companyService;
         this.coursesService = coursesService;
     }
+
     @ModelAttribute("companyList")
-    public List<Company>getAllCompany(){
+    public List<Company> getAllCompany() {
         return companyService.getAllCompanies();
     }
 
 
     @GetMapping()
-    public String getAllCourses( Model model){
-        model.addAttribute("courses",coursesService.getAllCourse());
+    public String getAllCourses(Model model) {
+        model.addAttribute("courses", coursesService.getAllCourse());
         return "course/courses";
 
     }
 
     @GetMapping("/addCourse")
-    public String addCourse(Model model){
-        model.addAttribute("course",new Course());
+    public String addCourse(Model model) {
+        model.addAttribute("course", new Course());
         return "course/addCourse";
     }
 
     @PostMapping("/saveCourse")
-    public String saveCourse(@ModelAttribute("course") Course course){
-        coursesService.addCourse(course,course.getCompanyId());
+    public String saveCourse(@ModelAttribute("course") Course course) {
+        coursesService.addCourse(course, course.getCompanyId());
         return "redirect:/courses";
     }
 
     @GetMapping("/{id}/updateCourse")
-    public String updateCourse(@PathVariable("id") Long id, Model model){
-        Course course =  coursesService.getCourseById(id);
+    public String updateCourse(@PathVariable("id") Long id, Model model) {
+        Course course = coursesService.getCourseById(id);
         model.addAttribute("course", course);
         return "course/updateCourse";
     }
 
-    @PatchMapping ("/{id}")
-    public String saveUpdateCourse(@PathVariable("id") Long id,@ModelAttribute("course") Course course){
-        coursesService.updateCourse(course,id);
+    @PatchMapping("/{id}")
+    public String saveUpdateCourse(@PathVariable("id") Long id, @ModelAttribute("course") Course course) {
+        coursesService.updateCourse(course, id);
         return "redirect:/courses";
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteCourse(@PathVariable("id")Long id){
+    public String deleteCourse(@PathVariable("id") Long id) {
         coursesService.deleteCourse(coursesService.getCourseById(id));
         return "redirect:/courses";
     }

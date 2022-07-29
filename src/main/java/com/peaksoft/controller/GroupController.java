@@ -19,10 +19,11 @@ public class GroupController {
     private final CourseService courseService;
 
     private final StudentService studentService;
+
     @Autowired
     public GroupController(GroupService groupService, CourseService courseService, StudentService studentService) {
         this.groupService = groupService;
-        this.courseService=courseService;
+        this.courseService = courseService;
         this.studentService = studentService;
     }
 
@@ -32,46 +33,49 @@ public class GroupController {
     }
 
     @GetMapping
-    public String getAllGroups(Model model){
-        model.addAttribute("groups",groupService.getAllGroups());
+    public String getAllGroups(Model model) {
+        model.addAttribute("groups", groupService.getAllGroups());
         return "group/groups";
 
     }
+
     @GetMapping("/addGroup")
-    public String addGroup(Model model){
-        model.addAttribute("group",new Group());
+    public String addGroup(Model model) {
+        model.addAttribute("group", new Group());
         return "group/addGroup";
     }
+
     @PostMapping("/saveGroup")
-    public String saveGroup(@ModelAttribute("group")Group group){
+    public String saveGroup(@ModelAttribute("group") Group group) {
         groupService.saveGroup(group);
         return "redirect:/groups";
     }
+
     @GetMapping("/{id}/update")
-    public String updateCompany(Model model, @PathVariable("id") long id){
-        model.addAttribute("groupUpdate",groupService.getGroupById(id));
+    public String updateCompany(Model model, @PathVariable("id") long id) {
+        model.addAttribute("groupUpdate", groupService.getGroupById(id));
         return "group/updateGroup";
     }
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("groupUpdate") Group group,
                          @PathVariable("id") long id) {
-        groupService.updateGroup(group,id);
+        groupService.updateGroup(group, id);
         return "redirect:/groups";
     }
+
     @DeleteMapping("/{id}")
-    public String deleteGroup(@PathVariable("id") Long id){
-       Group group= groupService.getGroupById(id);
-       groupService.deleteGroup(group);
-       return "redirect:/groups";
+    public String deleteGroup(@PathVariable("id") Long id) {
+        Group group = groupService.getGroupById(id);
+        groupService.deleteGroup(group);
+        return "redirect:/groups";
     }
 
     @GetMapping("/search")
     public String search(String name, Model model) {
         if (name != null) {
             model.addAttribute("list", studentService.findStudentByName(name));
-        }
-        else {
+        } else {
             model.addAttribute("list", studentService.getAllStudents());
         }
         return "/student/studentSearch";

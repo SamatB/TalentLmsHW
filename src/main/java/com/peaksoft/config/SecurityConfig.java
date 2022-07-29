@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new UserDetailServiceImpl();
     }
 
@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -47,19 +47,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").authenticated()
                 .antMatchers("/companies/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/teachers/**").hasAnyAuthority("ADMIN")
-                .antMatchers( "/courses").hasAnyAuthority("ADMIN", "INSTRUCTOR")
-                .antMatchers( "/courses/{id}/updateCourse").hasAnyAuthority("INSTRUCTOR","ADMIN")
-                .antMatchers( "/courses/addCourse").hasAuthority("ADMIN")
-                .antMatchers( "/courses/delete/{id}").hasAuthority("ADMIN")
-                .antMatchers( "/groups").hasAnyAuthority("ADMIN", "INSTRUCTOR")
-                .antMatchers( "/groups/{id}/update").hasAnyAuthority("INSTRUCTOR","ADMIN")
-                .antMatchers( "/groups/addGroup").hasAuthority("ADMIN")
-                .antMatchers( "/groups/{id}").hasAuthority("ADMIN")
-                .antMatchers( "/students").hasAnyAuthority("ADMIN", "INSTRUCTOR")
-                .antMatchers( "/students/{id}/update").hasAnyAuthority("INSTRUCTOR","ADMIN")
-                .antMatchers( "/students/addStudent").hasAuthority("ADMIN")
-                .antMatchers( "/students/{id}").hasAuthority("ADMIN")
-                .antMatchers( "/students/search").hasAnyAuthority("ADMIN", "INSTRUCTOR")
+                .antMatchers("/courses").hasAnyAuthority("ADMIN", "INSTRUCTOR")
+                .antMatchers("/courses/{id}/updateCourse").hasAnyAuthority("INSTRUCTOR", "ADMIN")
+                .antMatchers("/courses/addCourse").hasAuthority("ADMIN")
+                .antMatchers("/courses/delete/{id}").hasAuthority("ADMIN")
+                .antMatchers("/groups").hasAnyAuthority("ADMIN", "INSTRUCTOR")
+                .antMatchers("/groups/{id}/update").hasAnyAuthority("INSTRUCTOR", "ADMIN")
+                .antMatchers("/groups/{id}").hasAnyAuthority("INSTRUCTOR", "ADMIN")
+                .antMatchers("/groups/addGroup").hasAuthority("ADMIN")
+                .antMatchers("/groups/{id}").hasAuthority("ADMIN")
+                .antMatchers("/students").hasAnyAuthority("ADMIN", "INSTRUCTOR")
+                .antMatchers("/students/{id}/update").hasAnyAuthority("INSTRUCTOR", "ADMIN")
+                .antMatchers("/students/addStudent").hasAuthority("ADMIN")
+                .antMatchers("/students/{id}").hasAuthority("ADMIN")
+                .antMatchers("/students/search").hasAnyAuthority("ADMIN", "INSTRUCTOR")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

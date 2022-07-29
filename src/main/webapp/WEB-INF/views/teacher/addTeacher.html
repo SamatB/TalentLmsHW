@@ -46,7 +46,7 @@
     <input type="text"  name="Teacher email" th:field="*{email}" placeholder="Teacher email">
     <br><br>
 
-    <select th:field="*{id}">
+    <select th:field="${teacher.courseId}">
         <option th:each="teacher:${courseList}"
                 th:value="${teacher.getId()}"
                 th:text="${teacher.getCourseName()}"></option>

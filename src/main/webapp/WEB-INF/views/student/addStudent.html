@@ -48,12 +48,14 @@
         <label for="offlineFormat">OFFLINE</label>
     </div>
     <br>
-    <input class="add" type="submit" value="Add" style="border-radius: 10px">
-    <select th:field="*{id}">
+
+    <select th:field="${student.groupId}">
         <option th:each="student:${groupList}"
                 th:value="${student.getId()}"
-                th:text="${student.getFirstName()}"></option>
+                th:text="${student.getGroupName()}"></option>
     </select>
+    <br>
+    <input class="add" type="submit" value="Add" style="border-radius: 10px">
     <br><br>
     <input type="button"  value="Go back" class="back"
            onclick="window.location.href = '/students'">

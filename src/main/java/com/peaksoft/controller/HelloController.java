@@ -1,6 +1,7 @@
 package com.peaksoft.controller;
 
 import com.peaksoft.dao.UserDao;
+import com.peaksoft.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HelloController {
-
     private UserDao userDao;
+    private Role role;
 
     @Autowired
     public HelloController(UserDao userDao) {
@@ -20,18 +21,18 @@ public class HelloController {
     }
 
     @GetMapping
-    public String hello(){
+    public String hello() {
         return "hello";
     }
 
     @GetMapping("/profile/{username}")
-    public String getProfile(@PathVariable("username") String username, Model model){
+    public String getProfile(@PathVariable("username") String username, Model model) {
         model.addAttribute("user", userDao.findByUserName(username));
         return "profile";
     }
 
     @RequestMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
 }

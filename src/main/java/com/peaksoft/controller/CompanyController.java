@@ -24,35 +24,38 @@ public class CompanyController {
     }
 
     @GetMapping()
-    public String getAllCompanies(Model model){
-        List<Company>companies=companyService.getAllCompanies();
-        model.addAttribute("companies",companies);
+    public String getAllCompanies(Model model) {
+        List<Company> companies = companyService.getAllCompanies();
+        model.addAttribute("companies", companies);
         return "company/companies";
     }
+
     @GetMapping("/addCompany")
-    public String addCompany(Model model){
-        model.addAttribute("company",new Company());
+    public String addCompany(Model model) {
+        model.addAttribute("company", new Company());
         return "company/addCompany";
     }
+
     @PostMapping("/saveCompany")
-    public String saveCompany(@ModelAttribute("company")Company company){
+    public String saveCompany(@ModelAttribute("company") Company company) {
         companyService.addCompany(company);
         return "redirect:/companies";
     }
 
     @GetMapping("/{id}/updateCompany")
-    public String updateCompany(@PathVariable("id")Long id,Model model){
-
-        model.addAttribute("company",companyService.getCompanyById(id));
+    public String updateCompany(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("company", companyService.getCompanyById(id));
         return "company/updateCompany";
     }
+
     @PatchMapping("/{id}")
-    public String saveUpdateCompany(@PathVariable("id")Long id,@ModelAttribute("company")Company company){
-        companyService.updateCompany(company,id);
+    public String saveUpdateCompany(@PathVariable("id") Long id, @ModelAttribute("company") Company company) {
+        companyService.updateCompany(company, id);
         return "redirect:/companies";
     }
+
     @DeleteMapping("/{id}")
-    public String deleteCompany(@PathVariable("id")Long id){
+    public String deleteCompany(@PathVariable("id") Long id) {
         companyService.deleteCompany(companyService.getCompanyById(id));
         return "redirect:/companies";
     }

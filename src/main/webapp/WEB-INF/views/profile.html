@@ -6,18 +6,25 @@
         background: url("https://wallpaperaccess.com/full/19607.jpg") no-repeat;
         background-size: cover;
     }
-    .card{
+
+    .card {
         color: yellowgreen;
         padding: 10px;
     }
+
     .back {
         padding: 10px 30px;
         margin: 0 auto;
         border-radius: 12px;
         display: block;
     }
-    .back:hover{
+
+    .back:hover {
         background-color: yellowgreen;
+    }
+
+    .blue {
+        color: blue;
     }
 </style>
 <head>
@@ -36,8 +43,17 @@
     <h1 th:text="*{getUserLastname}"></h1>
     <label>Lastname</label>
     <h1 th:text="*{userName}"></h1>
-    <label>Age</label>
-    <p class="title" th:text="*{age}"></p>
+    <label class="blue">Age</label>
+    <p class="blue " th:text="*{age}"></p>
+    <label class="blue">Role</label>
+    <br>
+    <i>
+        <span sec:authentication="principal.authorities"></span>
+    </i>
+    <h1 class="blue" th:text="${principal.authorities}"></h1>
+    <div>
+
+    </div>
     <a href="#"><i class="fa fa-dribble"></i></a>
     <a href="#"><i class="fa fa-facebook"></i></a>
     <a href="#"><i class="fa fa-telegram"></i></a>
@@ -46,6 +62,7 @@
     <br><br><br>
     <input type="button" value="Go to main" class="back"
            onclick="window.location.href = '/'">
+</div>
 </div>
 </body>
 </html>

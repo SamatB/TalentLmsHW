@@ -23,6 +23,7 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 public class JpaConfig {
     private final Environment env;
+
     @Autowired
     public JpaConfig(Environment env) {
         this.env = env;
@@ -55,7 +56,7 @@ public class JpaConfig {
     }
 
     @Bean
-    public PlatformTransactionManager txManager(){
+    public PlatformTransactionManager txManager() {
         return new JpaTransactionManager(
                 Objects.requireNonNull(getEntityManagerFactoryBean().getObject()));
     }

@@ -29,6 +29,6 @@ public class Company {
     private String locatedCountry;
 
     @OneToMany(fetch = FetchType.EAGER,
-            cascade = {CascadeType.REMOVE,CascadeType.REFRESH},mappedBy = "company")
+            cascade = CascadeType.ALL,mappedBy = "company")
     private List<Course>courses;
 }
